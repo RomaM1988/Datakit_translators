@@ -15,9 +15,8 @@ EXECUTE_DEPLOY=$4
 echo "file at ${Interop_Release}/latestBaseline.txt"
 echo "i a here"
 filename=${Interop_Release}/latestBaseline.txt
-while read -r line; do
-    name="$line"
-    echo "Name read from file - $name"
+while read p; do
+  echo "$p"
 done < "$filename"
 echo "here i "
 #UNIT_PATH=
