@@ -11,6 +11,7 @@ pipeline {
 	parameters {
 		string(name: 'InteropRelease', defaultValue: 'Interop10', description : 'Use the latest IP from Interop release to start the process.')
 		string(name: 'DatakitPath', defaultValue: 'J://datakit_translator', description : 'Path where Interop baseline will be downloaded for Datakit translators.')
+		string(name: 'StagePath', defaultValue: '/apps/JenkinsBase/stage/Datakit', description : 'Path where datakit_translator kits are to be staged.')
 		booleanParam(name: 'Deploy', defaultValue: false, description : 'Deploy staging directory contents to customer setup')
 	}
 stages {
@@ -20,7 +21,7 @@ stages {
         steps {
 		script{
 			echo  "checking if any new baseline for ${params.InteropRelease} is available for download."
-			bat """ P:/Data_Exchange/from_Roma/jenkins/datakit/checkVersion_Download.bat ${params.InteropRelease} """
+			//bat """ P:/Data_Exchange/from_Roma/jenkins/datakit/checkVersion_Download.bat ${params.InteropRelease} """
 	            }					
             }
         }
@@ -30,10 +31,10 @@ stages {
         	steps {
 			script{
 				echo "new baseline is available so starting the test for ${params.InteropRelease}."
-				dir ("//plm/pnnas/ppic/Data_Exchange/from_Roma/jenkins/datakit")
-				{
-                        	  sh " /usr/bin/perl -w Datakit_interop.pl -b=${params.InteropRelease} -r=1 " 
-				}
+				//dir ("//plm/pnnas/ppic/Data_Exchange/from_Roma/jenkins/datakit")
+				//{
+                //        	  sh " /usr/bin/perl -w Datakit_interop.pl -b=${params.InteropRelease} -r=1 " 
+				//}
 			}					
             	}
         }
@@ -41,7 +42,10 @@ stages {
         	agent { label "${STAGE_AGENT}" }
         	steps {
 			script{
-				echo  "StageAndDeploy step."
+				echo  "Executing stage and deploy..."
+				buildDir="${params.DatakitPath}/Baseline_${params.InteropRelease}"
+				sh "chmod +x ./stageAndDeployTranslatorWorkerUnit.sh "
+				sh "./stageAndDeployTranslatorWorkerUnit.sh ${buildDir} ${stagePath} 'Artifacts' ${params.Deploy}"
 			}					
             	}
         }
