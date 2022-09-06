@@ -12,13 +12,14 @@ Interop_Release=$1
 STAGE_BASE_DIR=$2
 ARTIFACTS_DIR=$3
 EXECUTE_DEPLOY=$4
-echo "file at ${Interop_Release}/latestBaseline.txt"
+
 echo "i a here"
 filename="${Interop_Release}/latestBaseline.txt"
 echo "file at $filename"
-while read p; do
-  echo "$p"
-done <${filename}
+cat $filename | while read line || [[ -n $line ]];
+do
+   # do something with $line here
+done
 echo "here i "
 #UNIT_PATH=
 
