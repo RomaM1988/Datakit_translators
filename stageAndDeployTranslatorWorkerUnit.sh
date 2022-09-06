@@ -15,6 +15,7 @@ EXECUTE_DEPLOY=$4
 echo "file at ${Interop_Release}/latestBaseline.txt"
 echo "i a here"
 filename="${Interop_Release}/latestBaseline.txt"
+echo "file at $filename"
 while read p; do
   echo "$p"
 done <$filename
