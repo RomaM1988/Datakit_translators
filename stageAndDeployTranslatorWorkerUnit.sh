@@ -18,7 +18,7 @@ filename="${Interop_Release}/latestBaseline.txt"
 echo "file at $filename"
 cat $filename | while read line || [[ -n $line ]];
 do
-   # do something with $line here
+  echo "yes $line"
 done
 echo "here i "
 #UNIT_PATH=
