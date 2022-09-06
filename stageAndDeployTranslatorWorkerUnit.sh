@@ -14,12 +14,12 @@ ARTIFACTS_DIR=$3
 EXECUTE_DEPLOY=$4
 echo "file at ${Interop_Release}/latestBaseline.txt"
 echo "i a here"
-filename="${Interop_Release}/latestBaseline.txt"
+filename=${Interop_Release}/latestBaseline.txt
 while read -r line; do
     name="$line"
     echo "Name read from file - $name"
 done < "$filename"
-
+echo "here i "
 #UNIT_PATH=
 
 # Run customer specific stage script to stage artifacts
