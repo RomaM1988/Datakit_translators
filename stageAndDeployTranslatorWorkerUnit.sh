@@ -13,9 +13,9 @@ STAGE_BASE_DIR=$2
 ARTIFACTS_DIR=$3
 EXECUTE_DEPLOY=$4
 
-while IFS= read -r line; do
-    echo "Text read from file: $line"
-done < ${Interop_Release}/latestBaseline.txt
+#while IFS= read -r line; do
+#    echo "Text read from file: $line"
+#done < ${Interop_Release}/latestBaseline.txt
 
 #UNIT_PATH=
 
