@@ -14,9 +14,11 @@ ARTIFACTS_DIR=$3
 EXECUTE_DEPLOY=$4
 echo "file at ${Interop_Release}/latestBaseline.txt"
 echo "i a here"
-while IFS= read -r line; do
-    echo "Text read from file: $line"
-done < ${Interop_Release}/latestBaseline.txt
+filename="${Interop_Release}/latestBaseline.txt"
+while read -r line; do
+    name="$line"
+    echo "Name read from file - $name"
+done < "$filename"
 
 #UNIT_PATH=
 
