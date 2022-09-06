@@ -20,7 +20,7 @@ stages {
         steps {
 		script{
 			echo  "checking if any new baseline for ${params.InteropRelease} is available for download."
-			bat """ P:/Data_Exchange/from_Roma/jenkins/datakit/checkVersion_Download.bat ${params.InteropRelease} """
+			// bat """ P:/Data_Exchange/from_Roma/jenkins/datakit/checkVersion_Download.bat ${params.InteropRelease} """
 	            }					
             }
         }
@@ -30,10 +30,10 @@ stages {
         	steps {
 			script{
 				echo "new baseline is available so starting the test for ${params.InteropRelease}."
-				dir ("//plm/pnnas/ppic/Data_Exchange/from_Roma/jenkins/datakit")
-				{
-                        	  sh " /usr/bin/perl -w Datakit_interop.pl -b=${params.InteropRelease} -r=1 " 
-				}
+				//dir ("//plm/pnnas/ppic/Data_Exchange/from_Roma/jenkins/datakit")
+				//{
+                        	//  sh " /usr/bin/perl -w Datakit_interop.pl -b=${params.InteropRelease} -r=1 " 
+				//}
 			}					
             	}
         }
