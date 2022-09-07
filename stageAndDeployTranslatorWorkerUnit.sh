@@ -19,7 +19,7 @@ echo "file at $filename"
 cat $filename | while read line || [[ -n $line ]];
 do
   echo "yes $line"
-  declare -g ${Lineaa}=$line
+  declare -g Lineaa=$line
   echo ${Lineaa}
 done
 
