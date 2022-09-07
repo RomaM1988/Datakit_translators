@@ -16,12 +16,14 @@ EXECUTE_DEPLOY=$4
 UNIT_PATH="${Interop_Release}/"
 filename="${Interop_Release}/latestBaseline.txt"
 echo "file at $filename"
-cat $filename | while read line || [[ -n $line ]];
+Lineaa=0
+cat $filename |( while read line || [[ -n $line ]];
 do
   echo "yes $line"
-  declare -g Lineaa=$line
+  Lineaa=$line
   echo ${Lineaa}
 done
+echo ${Lineaa})
 
 echo ${Lineaa}
 arrIN=(${Lineaa//,/ })
