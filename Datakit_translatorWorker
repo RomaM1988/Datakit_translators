@@ -44,8 +44,9 @@ stages {
 			script{
 				echo  "Executing stage and deploy..."
 				buildDir="${params.DatakitPath}/Baseline_${params.InteropRelease}"
+				stageDir="${params.stagePath}_TranslatorWorker_${BUILD_TIMESTAMP}"
 				sh "chmod +x ./stageAndDeployTranslatorWorkerUnit.sh "
-				sh "./stageAndDeployTranslatorWorkerUnit.sh ${buildDir} ${stagePath} 'Artifacts' ${params.Deploy}"
+				sh "./stageAndDeployTranslatorWorkerUnit.sh ${buildDir} ${stageDir} 'Artifacts' ${params.Deploy}"
 			}					
             	}
         }
