@@ -27,7 +27,7 @@ then
 fi
 
 # Copy all 
-cp -r ${SOURCE_PATH}/*   ${STAGE_DIR}/jt_sw || { exit 1;}
+cp -r ${SOURCE_PATH}/*   ${STAGE_DIR}jt_sw || { exit 1;}
 
 # Then remove selected iteams
 #rm -rf ${STAGE_DIR}/debug || { exit 1;}
