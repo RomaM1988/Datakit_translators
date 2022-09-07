@@ -29,7 +29,7 @@ while read entry
 do
         export var=$entry
         echo $var
-done<filename
+done<$filename
 
 echo $var
 echo ${Lineaa}=$var
