@@ -16,22 +16,14 @@ EXECUTE_DEPLOY=$4
 UNIT_PATH="${Interop_Release}/"
 filename="${Interop_Release}/latestBaseline.txt"
 
-Lineaa=""
-//cat $filename | while read line || [[ -n $line ]];
-//do
-  //echo "yes $line"
-  //Lineaa=$line
-  //echo ${Lineaa}
-//done
-
-var="NONE"
-while read entry
+Lineaa="None"
+cat $filename | while read line || [[ -n $line ]];
 do
-        export var=$entry
-        echo $var
-done<$filename
+  echo "yes $line"
+  export Lineaa=$line
+  echo ${Lineaa}
+done
 
-echo $var
 echo ${Lineaa}
 arrIN=(${Lineaa//,/ }
 echo ${arrIN[0]}
