@@ -20,6 +20,9 @@ cat $filename | while read line || [[ -n $line ]];
 do
   echo "yes $line"
 done
+#IN="bla@some.com;john@home.com"
+arrIN=(${line//,/ })
+echo ${arrIN[0]}
 echo "here i "
 #UNIT_PATH=
 
