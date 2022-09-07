@@ -17,7 +17,7 @@ filename="${Interop_Release}/latestBaseline.txt"
 line=$(head -n 1 $filename)
 arrIN=(${line//,/ })
 UNIT_PATH="${Interop_Release}/${arrIN[0]}/${arrIN[0]}"
-
+echo "unit path is $UNIT_PATH"
 
 #Run customer specific stage script to stage artifacts
 #chmod 0755 ${ARTIFACTS_DIR}/stage_and_deploy_artifacts.sh || { exit 1;}
