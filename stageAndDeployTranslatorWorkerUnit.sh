@@ -15,22 +15,19 @@ EXECUTE_DEPLOY=$4
 
 UNIT_PATH="${Interop_Release}/"
 filename="${Interop_Release}/latestBaseline.txt"
-echo "file at $filename"
-Lineaa=0
-cat $filename |( while read line || [[ -n $line ]];
+
+typeset Lineaa=""
+cat $filename | while read line || [[ -n $line ]];
 do
   echo "yes $line"
   Lineaa=$line
   echo ${Lineaa}
 done
-echo ${Lineaa}
-arrIN=(${Lineaa//,/ })
+echo $Lineaa
+arrIN=(${Lineaa//,/ }
 echo ${arrIN[0]}
 echo "here i "
 UNIT_PATH="${Interop_Release}/abc_${arrIN[0]}/${arrIN[0]}")
-
-echo ${Lineaa}
-
 echo "unit path is $UNIT_PATH"
 
 # Run customer specific stage script to stage artifacts
