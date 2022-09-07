@@ -18,7 +18,7 @@ filename="${Interop_Release}/latestBaseline.txt"
 
 line=$(head -n 1 $filename)
 echo "yes $line"
-arrIN=(${line//,/ }
+arrIN=(${line//,/ })
 echo ${arrIN[0]}
 echo "here i "
 UNIT_PATH="${Interop_Release}/abc_${arrIN[0]}/${arrIN[0]}")
