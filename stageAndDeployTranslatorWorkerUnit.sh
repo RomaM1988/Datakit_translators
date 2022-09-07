@@ -17,13 +17,14 @@ UNIT_PATH="${Interop_Release}/"
 filename="${Interop_Release}/latestBaseline.txt"
 
 Lineaa="None"
+line=$(head -n 1 $filename)
 //cat $filename |
-while read line || [[ -n $line ]];
-do
+//while read line || [[ -n $line ]];
+//do
   echo "yes $line"
-  export Lineaa=$line
-  echo ${Lineaa}
-done<$filename
+  //export Lineaa=$line
+  //echo ${Lineaa}
+//done<$filename
 
 echo ${Lineaa}
 arrIN=(${Lineaa//,/ }
