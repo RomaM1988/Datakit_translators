@@ -32,9 +32,9 @@ do
 done<filename
 
 echo $var
-//echo ${Lineaa}
-//arrIN=(${Lineaa//,/ }
-//echo ${arrIN[0]}
+echo ${Lineaa}=$var
+arrIN=(${Lineaa//,/ }
+echo ${arrIN[0]}
 echo "here i "
 UNIT_PATH="${Interop_Release}/abc_${arrIN[0]}/${arrIN[0]}")
 echo "unit path is $UNIT_PATH"
