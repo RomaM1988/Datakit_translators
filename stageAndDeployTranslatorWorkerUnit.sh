@@ -7,7 +7,7 @@ then
         echo "For example; stageAndDeployTranslatorWorkerUnit.sh J:\datakit_translator\Baseline_Interop10 /plm/pnnas/ppic/users/<stage_dir> <ArtifactsDir> true/false"
         exit 1
 fi
-
+declare -g Lineaa
 Interop_Release=$1
 STAGE_BASE_DIR=$2
 ARTIFACTS_DIR=$3
@@ -19,7 +19,8 @@ echo "file at $filename"
 cat $filename | while read line || [[ -n $line ]];
 do
   echo "yes $line"
-  declare -g Lineaa=$line 
+  Lineaa=$line
+  echo ${Lineaa}
 done
 arrIN=(${Lineaa//,/ })
 echo ${arrIN[0]}
