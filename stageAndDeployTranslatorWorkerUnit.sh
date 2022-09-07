@@ -23,13 +23,14 @@ do
   Lineaa=$line
   echo ${Lineaa}
 done
-echo ${Lineaa})
-
 echo ${Lineaa}
 arrIN=(${Lineaa//,/ })
 echo ${arrIN[0]}
 echo "here i "
-UNIT_PATH="${Interop_Release}/abc_${arrIN[0]}/${arrIN[0]}"
+UNIT_PATH="${Interop_Release}/abc_${arrIN[0]}/${arrIN[0]}")
+
+echo ${Lineaa}
+
 echo "unit path is $UNIT_PATH"
 
 # Run customer specific stage script to stage artifacts
