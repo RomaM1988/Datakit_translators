@@ -17,15 +17,24 @@ UNIT_PATH="${Interop_Release}/"
 filename="${Interop_Release}/latestBaseline.txt"
 
 Lineaa=""
-cat $filename | while read line || [[ -n $line ]];
+//cat $filename | while read line || [[ -n $line ]];
+//do
+  //echo "yes $line"
+  //Lineaa=$line
+  //echo ${Lineaa}
+//done
+
+var="NONE"
+while read entry
 do
-  echo "yes $line"
-  Lineaa=$line
-  echo ${Lineaa}
-done
-echo ${Lineaa}
-arrIN=(${Lineaa//,/ }
-echo ${arrIN[0]}
+        export var=$entry
+        echo $var
+done<filename
+
+echo $var
+//echo ${Lineaa}
+//arrIN=(${Lineaa//,/ }
+//echo ${arrIN[0]}
 echo "here i "
 UNIT_PATH="${Interop_Release}/abc_${arrIN[0]}/${arrIN[0]}")
 echo "unit path is $UNIT_PATH"
