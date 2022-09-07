@@ -19,12 +19,12 @@ echo "file at $filename"
 cat $filename | while read line || [[ -n $line ]];
 do
   echo "yes $line"
-  arrIN=(${line//,/ })
+  export arrIN=(${line//,/ })
   echo ${arrIN[0]}
   echo "here i "
-  UNIT_PATH="${Interop_Release}/${arrIN[0]}/${arrIN[0]}"
+  
 done
-
+UNIT_PATH="${Interop_Release}/${arrIN[0]}/${arrIN[0]}"
 echo "unit path is $UNIT_PATH"
 
 # Run customer specific stage script to stage artifacts
