@@ -12,20 +12,19 @@ Interop_Release=$1
 STAGE_BASE_DIR=$2
 ARTIFACTS_DIR=$3
 EXECUTE_DEPLOY=$4
-
+UNIT_PATH="${Interop_Release}/"
 echo "i a here"
 filename="${Interop_Release}/latestBaseline.txt"
 echo "file at $filename"
-arrIN=
 cat $filename | while read line || [[ -n $line ]];
 do
   echo "yes $line"
   arrIN=(${line//,/ })
-  
+  echo ${arrIN[0]}
+  echo "here i "
+  UNIT_PATH="${Interop_Release}/${arrIN[0]}/${arrIN[0]}"
 done
-echo ${arrIN[0]}
-echo "here i "
-UNIT_PATH="${Interop_Release}/${arrIN[0]}/${arrIN[0]}"
+
 echo "unit path is $UNIT_PATH"
 
 # Run customer specific stage script to stage artifacts
