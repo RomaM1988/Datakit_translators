@@ -12,16 +12,18 @@ Interop_Release=$1
 STAGE_BASE_DIR=$2
 ARTIFACTS_DIR=$3
 EXECUTE_DEPLOY=$4
+
 UNIT_PATH="${Interop_Release}/"
 filename="${Interop_Release}/latestBaseline.txt"
 echo "file at $filename"
 cat $filename | while read line || [[ -n $line ]];
 do
   echo "yes $line"
-  declare -gA arrIN=(${line//,/ })
-  echo ${arrIN[0]}
-  echo "here i "
+  declare -g Lineaa=$line 
 done
+arrIN=(${Lineaa//,/ })
+echo ${arrIN[0]}
+echo "here i "
 UNIT_PATH="${Interop_Release}/abc_${arrIN[0]}/${arrIN[0]}"
 echo "unit path is $UNIT_PATH"
 
