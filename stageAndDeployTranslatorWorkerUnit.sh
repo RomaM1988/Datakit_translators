@@ -16,6 +16,7 @@ EXECUTE_DEPLOY=$4
 echo "i a here"
 filename="${Interop_Release}/latestBaseline.txt"
 echo "file at $filename"
+arrIN=
 cat $filename | while read line || [[ -n $line ]];
 do
   echo "yes $line"
