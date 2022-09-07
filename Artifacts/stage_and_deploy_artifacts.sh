@@ -18,16 +18,22 @@ EXECUTE_DEPLOY=$4
 STAGE_DIR=${STAGE_BASE_DIR}/Solidworks/lnx64/TranslatorBinaries/
 SOURCE_PATH=${UNIT_PATH}/lnx64/kits/jt_sw
 SOLIDWORKS_ARTIFACTS_DIR=${CUSTOMER_ARTIFACTS_DIR}/Solidworks/lnx64
-
+SOLIDWORKS_STAGE_DIR=${STAGE_DIR}jt_sw
 if [ ! -d ${STAGE_DIR} ]
 then
 	echo "Creating staging directory ${STAGE_DIR}"
 	mkdir -p ${STAGE_DIR} || { exit 1;}
 	chmod -R 0777 ${STAGE_DIR} || { exit 1;}
 fi
+if [ ! -d ${SOLIDWORKS_STAGE_DIR} ]
+then
+	echo "Creating staging directory ${SOLIDWORKS_STAGE_DIR}"
+	mkdir -p ${SOLIDWORKS_STAGE_DIR} || { exit 1;}
+	chmod -R 0777 ${SOLIDWORKS_STAGE_DIR} || { exit 1;}
+fi
 
 # Copy all 
-cp -r ${SOURCE_PATH}/*   ${STAGE_DIR}jt_sw || { exit 1;}
+cp -r ${SOURCE_PATH}/*   ${SOLIDWORKS_STAGE_DIR} || { exit 1;}
 
 # Then remove selected iteams
 #rm -rf ${STAGE_DIR}/debug || { exit 1;}
