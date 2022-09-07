@@ -16,18 +16,9 @@ EXECUTE_DEPLOY=$4
 UNIT_PATH="${Interop_Release}/"
 filename="${Interop_Release}/latestBaseline.txt"
 
-Lineaa="None"
 line=$(head -n 1 $filename)
-//cat $filename |
-//while read line || [[ -n $line ]];
-//do
-  echo "yes $line"
-  //export Lineaa=$line
-  //echo ${Lineaa}
-//done<$filename
-
-echo ${Lineaa}
-arrIN=(${Lineaa//,/ }
+echo "yes $line"
+arrIN=(${line//,/ }
 echo ${arrIN[0]}
 echo "here i "
 UNIT_PATH="${Interop_Release}/abc_${arrIN[0]}/${arrIN[0]}")
