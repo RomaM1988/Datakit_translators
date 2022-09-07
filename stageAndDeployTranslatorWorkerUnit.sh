@@ -7,24 +7,22 @@ then
         echo "For example; stageAndDeployTranslatorWorkerUnit.sh J:\datakit_translator\Baseline_Interop10 /plm/pnnas/ppic/users/<stage_dir> <ArtifactsDir> true/false"
         exit 1
 fi
-
+declare arrIN=
 Interop_Release=$1
 STAGE_BASE_DIR=$2
 ARTIFACTS_DIR=$3
 EXECUTE_DEPLOY=$4
 UNIT_PATH="${Interop_Release}/"
-echo "i a here"
 filename="${Interop_Release}/latestBaseline.txt"
 echo "file at $filename"
 cat $filename | while read line || [[ -n $line ]];
 do
   echo "yes $line"
-  export arrIN=(${line//,/ })
+  arrIN=(${line//,/ })
   echo ${arrIN[0]}
   echo "here i "
-  
 done
-UNIT_PATH="${Interop_Release}/${arrIN[0]}/${arrIN[0]}"
+UNIT_PATH="${Interop_Release}/abc_${arrIN[0]}/${arrIN[0]}"
 echo "unit path is $UNIT_PATH"
 
 # Run customer specific stage script to stage artifacts
