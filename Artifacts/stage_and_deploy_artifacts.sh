@@ -78,8 +78,8 @@ cp -r ${WNT_SOURCE_PATH}/*   ${SOLIDWORKS_WNT_STAGE_DIR} || { exit 1;}
 RUN_WNT_SWTOJT=${WNT_STAGE_DIR}/run_swtojt.bat
 RUN_WNT_SWTOJT_MULTICAD=${WNT_STAGE_DIR}/run_swtojt_multicad.bat
 
-cp -f ${SOLIDWORKS_WNT_ARTIFACTS_DIR}/run_swtojt ${RUN_WNT_SWTOJT} || { exit 1;}
-cp -f ${SOLIDWORKS_WNT_ARTIFACTS_DIR}/run_swtojt_multicad ${RUN_WNT_SWTOJT_MULTICAD} || { exit 1;}
+cp -f ${SOLIDWORKS_WNT_ARTIFACTS_DIR}/run_swtojt.bat ${RUN_WNT_SWTOJT} || { exit 1;}
+cp -f ${SOLIDWORKS_WNT_ARTIFACTS_DIR}/run_swtojt_multicad.bat ${RUN_WNT_SWTOJT_MULTICAD} || { exit 1;}
 cp -f ${SOLIDWORKS_WNT_ARTIFACTS_DIR}/SWJT_Translator_README.txt ${STAGE_BASE_DIR}/Solidworks/wntx64/ || { exit 1;}
 
 chmod 0755 ${RUN_WNT_SWTOJT} || { exit 1;}
