@@ -19,7 +19,7 @@ arrIN=(${line//,/ })
 UNIT_PATH="${Interop_Release}/${arrIN[0]}/${arrIN[0]}"
 echo "unit path is $UNIT_PATH"
 
-if [${arrIN[1]} eq 0 ]
+if ["${arrIN[1]}" == 0 ]
 then 
         exit 1
 fi
