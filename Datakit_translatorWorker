@@ -47,7 +47,7 @@ stages {
 				stageDir="${params.StagePath}/Datakit_TranslatorWorker_${BUILD_TIMESTAMP}"
 				sh "chmod +x ./stageAndDeployTranslatorWorkerUnit.sh "
 				//sh "./stageAndDeployTranslatorWorkerUnit.sh ${buildDir} ${stageDir} 'Artifacts' ${params.Deploy}"
-				def stdout = sh(returnStatus: true , script: "./stageAndDeployTranslatorWorkerUnit.sh ${buildDir} ${stageDir} 'Artifacts' ${params.Deploy}")
+				def result = sh(script: "./stageAndDeployTranslatorWorkerUnit.sh ${buildDir} ${stageDir} 'Artifacts' ${params.Deploy}", returnStatus: true)
                     		//result = stdout.readLines().drop(1).join(" ")
 				echo ${result}
                     		if (result != 0) 
