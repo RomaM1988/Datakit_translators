@@ -75,11 +75,11 @@ fi
 # Copy all 
 cp -r ${WNT_SOURCE_PATH}/*   ${Inventor_WNT_STAGE_DIR} || { exit 1;}
 
-RUN_WNT_INVENTORTOJT=${WNT_STAGE_DIR}/run_inventortojt.bat
-RUN_WNT_INVENTORTOJT_MULTICAD=${WNT_STAGE_DIR}/run_inventortojt_multicad.bat
+RUN_WNT_INVENTORTOJT=${WNT_STAGE_DIR}/run_Inventortojt.bat
+RUN_WNT_INVENTORTOJT_MULTICAD=${WNT_STAGE_DIR}/run_Inventortojt_multicad.bat
 
-cp -f ${Inventor_WNT_ARTIFACTS_DIR}/run_inventortojt.bat ${RUN_WNT_INVENTORTOJT} || { exit 1;}
-cp -f ${Inventor_WNT_ARTIFACTS_DIR}/run_inventortojt_multicad.bat ${RUN_WNT_INVENTORTOJT_MULTICAD} || { exit 1;}
+cp -f ${Inventor_WNT_ARTIFACTS_DIR}/run_Inventortojt.bat ${RUN_WNT_INVENTORTOJT} || { exit 1;}
+cp -f ${Inventor_WNT_ARTIFACTS_DIR}/run_Inventortojt_multicad.bat ${RUN_WNT_INVENTORTOJT_MULTICAD} || { exit 1;}
 cp -f ${Inventor_WNT_ARTIFACTS_DIR}/InventorJT_Translator_README.txt ${STAGE_BASE_DIR}/Inventor/wntx64/ || { exit 1;}
 
 chmod 0755 ${RUN_WNT_INVENTORTOJT} || { exit 1;}
