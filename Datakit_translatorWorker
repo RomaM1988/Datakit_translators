@@ -49,7 +49,7 @@ stages {
 				//sh "./stageAndDeployTranslatorWorkerUnit.sh ${buildDir} ${stageDir} 'Artifacts' ${params.Deploy}"
 				result = sh(script: "./stageAndDeployTranslatorWorkerUnit.sh ${buildDir} ${stageDir} 'Artifacts' ${params.Deploy}", returnStatus: true)
                     		//result = stdout.readLines().drop(1).join(" ")
-				echo ${result}
+				echo "${result}"
                     		if (result != 0) 
 				{ 
 				    echo "exit code is NOT zero"
