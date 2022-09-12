@@ -28,5 +28,9 @@ chmod 0755 ${ARTIFACTS_DIR}/Inventor/Inventor_stage_and_deploy_artifacts.sh || {
 ${ARTIFACTS_DIR}/Inventor/Inventor_stage_and_deploy_artifacts.sh ${UNIT_PATH} ${STAGE_BASE_DIR} ${ARTIFACTS_DIR} ${EXECUTE_DEPLOY} || { exit 1;}
 
 #Run Catiav4 Staging and deploy
-chmod 0755 ${ARTIFACTS_DIR}/Catiav4/Catiav4_stage_and_deploy_artifacts.sh || { exit 1;}
-${ARTIFACTS_DIR}/Catiav4/Catiav4_stage_and_deploy_artifacts.sh ${UNIT_PATH} ${STAGE_BASE_DIR} ${ARTIFACTS_DIR} ${EXECUTE_DEPLOY} || { exit 1;}
+chmod 0755 ${ARTIFACTS_DIR}/CatiaV4/CatiaV4_stage_and_deploy_artifacts.sh || { exit 1;}
+${ARTIFACTS_DIR}/CatiaV4/CatiaV4_stage_and_deploy_artifacts.sh ${UNIT_PATH} ${STAGE_BASE_DIR} ${ARTIFACTS_DIR} ${EXECUTE_DEPLOY} || { exit 1;}
+
+#Run Iges Staging and deploy
+chmod 0755 ${ARTIFACTS_DIR}/Iges/Iges_stage_and_deploy_artifacts.sh || { exit 1;}
+${ARTIFACTS_DIR}/Iges/Iges_stage_and_deploy_artifacts.sh ${UNIT_PATH} ${STAGE_BASE_DIR} ${ARTIFACTS_DIR} ${EXECUTE_DEPLOY} || { exit 1;}
