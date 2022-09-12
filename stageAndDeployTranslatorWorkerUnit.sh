@@ -34,3 +34,7 @@ ${ARTIFACTS_DIR}/CatiaV4/CatiaV4_stage_and_deploy_artifacts.sh ${UNIT_PATH} ${ST
 #Run Iges Staging and deploy
 chmod 0755 ${ARTIFACTS_DIR}/Iges/Iges_stage_and_deploy_artifacts.sh || { exit 1;}
 ${ARTIFACTS_DIR}/Iges/Iges_stage_and_deploy_artifacts.sh ${UNIT_PATH} ${STAGE_BASE_DIR} ${ARTIFACTS_DIR} ${EXECUTE_DEPLOY} || { exit 1;}
+
+#Run Acis Staging and deploy
+chmod 0755 ${ARTIFACTS_DIR}/Acis/Acis_stage_and_deploy_artifacts.sh || { exit 1;}
+${ARTIFACTS_DIR}/Acis/Acis_stage_and_deploy_artifacts.sh ${UNIT_PATH} ${STAGE_BASE_DIR} ${ARTIFACTS_DIR} ${EXECUTE_DEPLOY} || { exit 1;}
