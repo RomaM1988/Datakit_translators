@@ -11,7 +11,7 @@ pipeline {
 	parameters {
 		string(name: 'InteropRelease', defaultValue: 'Interop10', description : 'Use the latest IP from Interop release to start the process.')
 		string(name: 'DatakitPath', defaultValue: '//plm/pnnas/jtdev/datakit_translator', description : 'Path where Interop baseline will be downloaded for Datakit translators.')
-		string(name: 'StagePath', defaultValue: '/apps/JenkinsBase/stage/Datakit', description : 'Path where datakit_translator kits are to be staged.')
+		string(name: 'StagePath', defaultValue: '/apps/JenkinsBase/stage', description : 'Path where datakit_translator kits are to be staged.')
 		booleanParam(name: 'Deploy', defaultValue: false, description : 'Deploy staging directory contents to customer setup')
 	}
 stages {
@@ -44,7 +44,7 @@ stages {
 			script{
 				echo  "Executing stage and deploy..."
 				buildDir="${params.DatakitPath}/Baseline_${params.InteropRelease}"
-				stageDir="${params.StagePath}_TranslatorWorker_${BUILD_TIMESTAMP}"
+				stageDir="${params.StagePath}/Datakit_TranslatorWorker_${BUILD_TIMESTAMP}"
 				sh "chmod +x ./stageAndDeployTranslatorWorkerUnit.sh "
 				sh "./stageAndDeployTranslatorWorkerUnit.sh ${buildDir} ${stageDir} 'Artifacts' ${params.Deploy}"
 			}					
@@ -53,17 +53,22 @@ stages {
 	stage('Purge Unit') {
 		agent { label "${DOWNLOAD_AGENT}" }
             	steps {
-			script{
-				echo  "Purge Unit step."
-			}					
+			echo "Executing Purge Unit Path ..."
+		script{		
+			buildDir="${params.DatakitPath}/Baseline_${params.InteropRelease}"
+			sh "chmod +x ./purge.sh "
+			sh "./purge.sh ${buildDir}"		
+		}					
             }
 	}
 	stage('Purge Stage') {
 		agent { label "${STAGE_AGENT}" }
         	steps {
-			script{
-				echo  "Purge stage step."
-			}					
+			echo "Executing Purge Stagging Path ..."
+		script{		
+			sh "chmod +x ./purge.sh "
+			sh "./purge.sh ${params.StagePath}"		
+		}					
             }
 	}
     }
