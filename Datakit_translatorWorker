@@ -46,7 +46,16 @@ stages {
 				buildDir="${params.DatakitPath}/Baseline_${params.InteropRelease}"
 				stageDir="${params.StagePath}/Datakit_TranslatorWorker_${BUILD_TIMESTAMP}"
 				sh "chmod +x ./stageAndDeployTranslatorWorkerUnit.sh "
-				sh "./stageAndDeployTranslatorWorkerUnit.sh ${buildDir} ${stageDir} 'Artifacts' ${params.Deploy}"
+				//sh "./stageAndDeployTranslatorWorkerUnit.sh ${buildDir} ${stageDir} 'Artifacts' ${params.Deploy}"
+				def stdout = sh(returnStdout: true , script: "./stageAndDeployTranslatorWorkerUnit.sh ${buildDir} ${stageDir} 'Artifacts' ${params.Deploy}").trim()
+                    		result = stdout.readLines().drop(1).join(" ")
+				echo ${result}
+                    		//if (result.equals("0")) {                                          
+                      		//error "As there is no CP submitted so skipping Group build and testing!"
+                    		//} 
+                    		//else {                                   
+                      		//  echo "total number of CP submitted for this build is ${result}"
+                    		//} 
 			}					
             	}
         }
