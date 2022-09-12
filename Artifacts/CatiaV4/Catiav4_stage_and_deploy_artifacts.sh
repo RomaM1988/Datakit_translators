@@ -21,7 +21,7 @@ EXECUTE_DEPLOY=$4
 LNX_STAGE_DIR=${STAGE_BASE_DIR}/Catiav4/lnx64/TranslatorBinaries/
 LNX_SOURCE_PATH=${UNIT_PATH}/lnx64/kits/jt_catiav4_d
 Catiav4_LNX_ARTIFACTS_DIR=${CUSTOMER_ARTIFACTS_DIR}/Catiav4/lnx64
-Catiav4_LNX_STAGE_DIR=${LNX_STAGE_DIR}jt_Catiav4
+Catiav4_LNX_STAGE_DIR=${LNX_STAGE_DIR}jt_catiav4_d
 
 if [ ! -d ${LNX_STAGE_DIR} ]
 then
@@ -56,7 +56,7 @@ chmod 0755 ${RUN_LNX_Catiav4TOJT_MULTICAD} || { exit 1;}
 WNT_STAGE_DIR=${STAGE_BASE_DIR}/Catiav4/wntx64/TranslatorBinaries/
 WNT_SOURCE_PATH=${UNIT_PATH}/wntx64/kits/jt_catiav4_d
 Catiav4_WNT_ARTIFACTS_DIR=${CUSTOMER_ARTIFACTS_DIR}/Catiav4/wntx64
-Catiav4_WNT_STAGE_DIR=${WNT_STAGE_DIR}jt_Catiav4
+Catiav4_WNT_STAGE_DIR=${WNT_STAGE_DIR}jt_catiav4_d
 
 if [ ! -d ${WNT_STAGE_DIR} ]
 then
