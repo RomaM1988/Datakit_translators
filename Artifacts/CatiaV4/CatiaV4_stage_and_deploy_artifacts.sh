@@ -16,11 +16,11 @@ CUSTOMER_ARTIFACTS_DIR=$3
 EXECUTE_DEPLOY=$4
 
 ############################################
-#Catiav4 Linux Staging
+#CatiaV4 Linux Staging
 ############################################
-LNX_STAGE_DIR=${STAGE_BASE_DIR}/Catiav4/lnx64/TranslatorBinaries/
+LNX_STAGE_DIR=${STAGE_BASE_DIR}/CatiaV4/lnx64/TranslatorBinaries/
 LNX_SOURCE_PATH=${UNIT_PATH}/lnx64/kits/jt_catiav4_d
-Catiav4_LNX_ARTIFACTS_DIR=${CUSTOMER_ARTIFACTS_DIR}/Catiav4/lnx64
+Catiav4_LNX_ARTIFACTS_DIR=${CUSTOMER_ARTIFACTS_DIR}/CatiaV4/lnx64
 Catiav4_LNX_STAGE_DIR=${LNX_STAGE_DIR}jt_catiav4_d
 
 if [ ! -d ${LNX_STAGE_DIR} ]
@@ -45,17 +45,17 @@ RUN_LNX_Catiav4TOJT_MULTICAD=${LNX_STAGE_DIR}/run_catiav4tojt_multicad
 
 cp -f ${Catiav4_LNX_ARTIFACTS_DIR}/run_catiav4tojt ${RUN_LNX_Catiav4TOJT} || { exit 1;}
 cp -f ${Catiav4_LNX_ARTIFACTS_DIR}/run_catiav4tojt_multicad ${RUN_LNX_Catiav4TOJT_MULTICAD} || { exit 1;}
-cp -f ${Catiav4_LNX_ARTIFACTS_DIR}/CatiaV4JT_Translator_README.txt ${STAGE_BASE_DIR}/Catiav4/lnx64/ || { exit 1;}
+cp -f ${Catiav4_LNX_ARTIFACTS_DIR}/CatiaV4JT_Translator_README.txt ${STAGE_BASE_DIR}/CatiaV4/lnx64/ || { exit 1;}
 
 chmod 0755 ${RUN_LNX_Catiav4TOJT} || { exit 1;}
 chmod 0755 ${RUN_LNX_Catiav4TOJT_MULTICAD} || { exit 1;}
 
 ############################################
-#Catiav4 Windows Staging
+#CatiaV4 Windows Staging
 ############################################
-WNT_STAGE_DIR=${STAGE_BASE_DIR}/Catiav4/wntx64/TranslatorBinaries/
+WNT_STAGE_DIR=${STAGE_BASE_DIR}/CatiaV4/wntx64/TranslatorBinaries/
 WNT_SOURCE_PATH=${UNIT_PATH}/wntx64/kits/jt_catiav4_d
-Catiav4_WNT_ARTIFACTS_DIR=${CUSTOMER_ARTIFACTS_DIR}/Catiav4/wntx64
+Catiav4_WNT_ARTIFACTS_DIR=${CUSTOMER_ARTIFACTS_DIR}/CatiaV4/wntx64
 Catiav4_WNT_STAGE_DIR=${WNT_STAGE_DIR}jt_catiav4_d
 
 if [ ! -d ${WNT_STAGE_DIR} ]
@@ -80,7 +80,7 @@ RUN_WNT_Catiav4TOJT_MULTICAD=${WNT_STAGE_DIR}/run_catiav4tojt_multicad.bat
 
 cp -f ${Catiav4_WNT_ARTIFACTS_DIR}/run_catiav4tojt.bat ${RUN_WNT_Catiav4TOJT} || { exit 1;}
 cp -f ${Catiav4_WNT_ARTIFACTS_DIR}/run_catiav4tojt_multicad.bat ${RUN_WNT_Catiav4TOJT_MULTICAD} || { exit 1;}
-#cp -f ${Catiav4_WNT_ARTIFACTS_DIR}/CatiaV4JT_Translator_README.txt ${STAGE_BASE_DIR}/Catiav4/wntx64/ || { exit 1;}
+#cp -f ${Catiav4_WNT_ARTIFACTS_DIR}/CatiaV4JT_Translator_README.txt ${STAGE_BASE_DIR}/CatiaV4/wntx64/ || { exit 1;}
 
 chmod 0755 ${RUN_WNT_Catiav4TOJT} || { exit 1;}
 chmod 0755 ${RUN_WNT_Catiav4TOJT_MULTICAD} || { exit 1;}
@@ -88,11 +88,11 @@ chmod 0755 ${RUN_WNT_Catiav4TOJT_MULTICAD} || { exit 1;}
 if [ ${EXECUTE_DEPLOY} == "true" ]
 then
 	############################################
-	#Catiav4 Linux Deploy
+	#CatiaV4 Linux Deploy
 	############################################
-	echo "Deploy flag is set to true. Executing deploy step for Catiav4 Linux build..."
+	echo "Deploy flag is set to true. Executing deploy step for CatiaV4 Linux build..."
 	releaseLNXName="Catiav4JT_LINUX"
-	cd ${STAGE_BASE_DIR}/Catiav4/lnx64 || { exit 1;}
+	cd ${STAGE_BASE_DIR}/CatiaV4/lnx64 || { exit 1;}
 	tar -czf $releaseLNXName.tar.gz TranslatorBinaries/ || { exit 1;}
 	
 	# echo "curl -u opentools_bot:YL6MtwZ35 -T $releaseLNXName.tar.gz https://artifacts.industrysoftware.automation.siemens.com/artifactory/generic-local/Opentools/PREVIEW/NXtoJT/$releaseLNXName/ || { exit 1;}"
@@ -101,11 +101,11 @@ then
 	cd -
 	
 	############################################
-	#Catiav4 Windows Deploy
+	#CatiaV4 Windows Deploy
 	############################################
-	echo "Deploy flag is set to true. Executing deploy step for Catiav4 Windows build..."
+	echo "Deploy flag is set to true. Executing deploy step for CatiaV4 Windows build..."
 	releaseWNTName="Catiav4JT_WNT"
-	cd ${STAGE_BASE_DIR}/Catiav4/wntx64 || { exit 1;}
+	cd ${STAGE_BASE_DIR}/CatiaV4/wntx64 || { exit 1;}
 	tar -czf $releaseWNTName.tar.gz TranslatorBinaries/ || { exit 1;}
 	
 	# echo "curl -u opentools_bot:YL6MtwZ35 -T $releaseWNTName.tar.gz https://artifacts.industrysoftware.automation.siemens.com/artifactory/generic-local/Opentools/PREVIEW/NXtoJT/$releaseWNTName/ || { exit 1;}"
