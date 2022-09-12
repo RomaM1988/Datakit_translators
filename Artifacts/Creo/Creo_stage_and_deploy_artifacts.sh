@@ -95,9 +95,9 @@ then
 	cd ${STAGE_BASE_DIR}/Creo/lnx64 || { exit 1;}
 	tar -czf $releaseLNXName.tar.gz TranslatorBinaries/ || { exit 1;}
 	
-	# echo "curl -u opentools_bot:YL6MtwZ35 -T $releaseLNXName.tar.gz https://artifacts.industrysoftware.automation.siemens.com/artifactory/generic-local/Opentools/PREVIEW/NXtoJT/$releaseLNXName/ || { exit 1;}"
+	# echo "curl -u opentools_bot:YL6MtwZ35 -T $releaseLNXName.tar.gz https://artifacts.industrysoftware.automation.siemens.com/artifactory/generic-local/Opentools/PREVIEW/CREO/$releaseLNXName/ || { exit 1;}"
 
-	# echo "curl -u opentools_bot:YL6MtwZ35 -T NXJT_Translator_README.txt https://artifacts.industrysoftware.automation.siemens.com/artifactory/generic-local/Opentools/PREVIEW/NXtoJT/$releaseLNXName/ || { exit 1;}"
+	# echo "curl -u opentools_bot:YL6MtwZ35 -T NXJT_Translator_README.txt https://artifacts.industrysoftware.automation.siemens.com/artifactory/generic-local/Opentools/PREVIEW/CREO/$releaseLNXName/ || { exit 1;}"
 	cd -
 	
 	############################################
@@ -108,9 +108,9 @@ then
 	cd ${STAGE_BASE_DIR}/Creo/wntx64 || { exit 1;}
 	tar -czf $releaseWNTName.tar.gz TranslatorBinaries/ || { exit 1;}
 	
-	# echo "curl -u opentools_bot:YL6MtwZ35 -T $releaseWNTName.tar.gz https://artifacts.industrysoftware.automation.siemens.com/artifactory/generic-local/Opentools/PREVIEW/NXtoJT/$releaseWNTName/ || { exit 1;}"
+	# echo "curl -u opentools_bot:YL6MtwZ35 -T $releaseWNTName.tar.gz https://artifacts.industrysoftware.automation.siemens.com/artifactory/generic-local/Opentools/PREVIEW/CREO/$releaseWNTName/ || { exit 1;}"
 
-	# echo "curl -u opentools_bot:YL6MtwZ35 -T NXJT_Translator_README.txt https://artifacts.industrysoftware.automation.siemens.com/artifactory/generic-local/Opentools/PREVIEW/NXtoJT/$releaseWNTName/ || { exit 1;}"
+	# echo "curl -u opentools_bot:YL6MtwZ35 -T NXJT_Translator_README.txt https://artifacts.industrysoftware.automation.siemens.com/artifactory/generic-local/Opentools/PREVIEW/CREO/$releaseWNTName/ || { exit 1;}"
 	cd -
 else
 	echo "Deploy flag is set to false. Skipping deploy step..."
