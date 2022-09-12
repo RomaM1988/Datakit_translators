@@ -21,7 +21,7 @@ stages {
         steps {
 		script{
 			echo  "checking if any new baseline for ${params.InteropRelease} is available for download."
-			bat """ P:/Data_Exchange/from_Roma/jenkins/datakit/checkVersion_Download.bat ${params.InteropRelease} """
+			//bat """ P:/Data_Exchange/from_Roma/jenkins/datakit/checkVersion_Download.bat ${params.InteropRelease} """
 	            }					
             }
         }
@@ -31,10 +31,10 @@ stages {
         	steps {
 			script{
 				echo "new baseline is available so starting the test for ${params.InteropRelease}."
-				dir ("//plm/pnnas/ppic/Data_Exchange/from_Roma/jenkins/datakit")
-				{
-                       	 	 sh " /usr/bin/perl -w Datakit_interop.pl -b=${params.InteropRelease} -r=1 " 
-				}
+				//dir ("//plm/pnnas/ppic/Data_Exchange/from_Roma/jenkins/datakit")
+				//{
+                       	 	// sh " /usr/bin/perl -w Datakit_interop.pl -b=${params.InteropRelease} -r=1 " 
+				//}
 			}					
             	}
         }
@@ -47,15 +47,17 @@ stages {
 				stageDir="${params.StagePath}/Datakit_TranslatorWorker_${BUILD_TIMESTAMP}"
 				sh "chmod +x ./stageAndDeployTranslatorWorkerUnit.sh "
 				//sh "./stageAndDeployTranslatorWorkerUnit.sh ${buildDir} ${stageDir} 'Artifacts' ${params.Deploy}"
-				def stdout = sh(returnStdout: true , script: "./stageAndDeployTranslatorWorkerUnit.sh ${buildDir} ${stageDir} 'Artifacts' ${params.Deploy}").trim()
-                    		result = stdout.readLines().drop(1).join(" ")
+				def stdout = sh(returnStatus: true , script: "./stageAndDeployTranslatorWorkerUnit.sh ${buildDir} ${stageDir} 'Artifacts' ${params.Deploy}").trim()
+                    		//result = stdout.readLines().drop(1).join(" ")
 				echo ${result}
-                    		//if (result.equals("0")) {                                          
-                      		//error "As there is no CP submitted so skipping Group build and testing!"
-                    		//} 
-                    		//else {                                   
-                      		//  echo "total number of CP submitted for this build is ${result}"
-                    		//} 
+                    		if (result != 0) 
+				{ 
+				    sh "echo 'exit code is NOT zero'"
+				} 
+				else 
+				{
+				    sh "echo 'exit code is zero'"
+				}
 			}					
             	}
         }
