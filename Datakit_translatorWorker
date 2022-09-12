@@ -51,7 +51,7 @@ stages {
             	}
         }
 	stage('Purge Unit') {
-		agent { label "${DOWNLOAD_AGENT}" }
+		agent { label "${STAGE_AGENT}" }
             	steps {
 			echo "Executing Purge Unit Path ..."
 		script{		
