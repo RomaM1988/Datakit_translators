@@ -1,7 +1,7 @@
-def gv
 def emailHandle
 def buildDir
 def stageDir
+def BUILD_PROCESS_FLAG
 def DOWNLOAD_AGENT='pni6w2981_yyjtadmn_WINDOW'
 def TEST_AGENT='DATAKIT_pnlv6s485_yyjtadmn_test'
 def STAGE_AGENT='DATAKIT_pnlv6s485_yyjtadmn_test'
@@ -21,7 +21,7 @@ stages {
         steps {
 		script{
 			echo  "checking if any new baseline for ${params.InteropRelease} is available for download."
-			//bat """ P:/Data_Exchange/from_Roma/jenkins/datakit/checkVersion_Download.bat ${params.InteropRelease} """
+			bat """ P:/Data_Exchange/from_Roma/jenkins/datakit/checkVersion_Download.bat ${params.InteropRelease} """
 	            }					
             }
         }
@@ -31,10 +31,10 @@ stages {
         	steps {
 			script{
 				echo "new baseline is available so starting the test for ${params.InteropRelease}."
-				//dir ("//plm/pnnas/ppic/Data_Exchange/from_Roma/jenkins/datakit")
-				//{
-                       	 	// sh " /usr/bin/perl -w Datakit_interop.pl -b=${params.InteropRelease} -r=1 " 
-				//}
+				dir ("//plm/pnnas/ppic/Data_Exchange/from_Roma/jenkins/datakit")
+				{
+                       	 		sh " /usr/bin/perl -w Datakit_interop.pl -b=${params.InteropRelease} -r=1 " 
+				}
 			}					
             	}
         }
@@ -46,23 +46,24 @@ stages {
 				buildDir="${params.DatakitPath}/Baseline_${params.InteropRelease}"
 				stageDir="${params.StagePath}/Datakit_TranslatorWorker_${BUILD_TIMESTAMP}"
 				sh "chmod +x ./stageAndDeployTranslatorWorkerUnit.sh "
-				//sh "./stageAndDeployTranslatorWorkerUnit.sh ${buildDir} ${stageDir} 'Artifacts' ${params.Deploy}"
 				result = sh(script: "./stageAndDeployTranslatorWorkerUnit.sh ${buildDir} ${stageDir} 'Artifacts' ${params.Deploy}", returnStatus: true)
-                    		//result = stdout.readLines().drop(1).join(" ")
-				echo "${result}"
                     		if (result != 0) 
 				{ 
-				    echo "exit code is NOT zero"
+				    echo "Skipping Stagging and deploy as no new baseline is available"
+				    BUILD_PROCESS_FLAG=false				    
 				} 
 				else 
 				{
-				    echo "exit code is zero"
+				    BUILD_PROCESS_FLAG=true
 				}
 			}					
             	}
         }
 	stage('Purge Unit') {
 		agent { label "${STAGE_AGENT}" }
+		when {
+			expression { "${BUILD_PROCESS_FLAG}"=="true" }
+		}
             	steps {
 			echo "Executing Purge Unit Path ..."
 		script{		
@@ -75,6 +76,9 @@ stages {
 	}
 	stage('Purge Stage') {
 		agent { label "${STAGE_AGENT}" }
+		when {
+			expression { "${BUILD_PROCESS_FLAG}"=="true" }
+		}
         	steps {
 			echo "Executing Purge Stagging Path ..."
 		script{		
