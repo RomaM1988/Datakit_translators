@@ -47,9 +47,14 @@ stages {
 				echo  "Executing stage and deploy..."
 				buildDir="${params.DatakitPath}/Baseline_${params.InteropRelease}"
 				stageDir="${params.StagePath}/Datakit_TranslatorWorker_${BUILD_TIMESTAMP}"
+				if (${params.Share} == True)
+				  {
+				    	sh "cp -r ${stageDir} //plm/pnnas/ppic/Data_Exchange/HybridSaaS_Translation/For_testing/"
+				  }
 				sh "chmod +x ./stageAndDeployTranslatorWorkerUnit.sh "
 				result = sh(script: "./stageAndDeployTranslatorWorkerUnit.sh ${buildDir} ${stageDir} 'Artifacts' ${params.Deploy}", returnStatus: true)
-                    		if (result != 0) 
+                    		
+				if (result != 0) 
 				{ 
 				    echo "Skipping Stagging and deploy as no new baseline is available"
 				    BUILD_PROCESS_FLAG=false				    
@@ -57,10 +62,7 @@ stages {
 				else 
 				{
 				    BUILD_PROCESS_FLAG=true
-				    if (${params.Share} == True)
-				    {
-				    	sh "cp -r ${stageDir} //plm/pnnas/ppic/Data_Exchange/HybridSaaS_Translation/For_testing/"
-				    }
+				    
 				}
 				
 			}					
