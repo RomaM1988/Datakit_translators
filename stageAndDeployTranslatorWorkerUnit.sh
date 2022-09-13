@@ -19,7 +19,7 @@ arrIN=(${line//,/ })
 UNIT_PATH="${Interop_Release}/${arrIN[0]}/${arrIN[0]}"
 echo "unit path is $UNIT_PATH"
 
-[[ ${arrIN[1]} -eq 1 ]] || { exit 1; }
+#[[ ${arrIN[1]} -eq 1 ]] || { exit 1; }
 
 #Run Solidworks Staging and deploy
 chmod 0755 ${ARTIFACTS_DIR}/Solidworks/Solidworks_stage_and_deploy_artifacts.sh || { exit 1;}
