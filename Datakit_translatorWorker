@@ -47,7 +47,8 @@ stages {
 				echo  "Executing stage and deploy..."
 				buildDir="${params.DatakitPath}/Baseline_${params.InteropRelease}"
 				stageDir="${params.StagePath}/Datakit_TranslatorWorker_${BUILD_TIMESTAMP}"
-				if ("${params.Share}"=="True")
+				echo "share is ${params.Share}"
+				if ("${params.Share}"=="true")
 				  {
 				    	echo "inside share function"
 					sh " cp -r /apps/JenkinsBase/stage/Datakit/Datakit_TranslatorWorker_2022_09_12_20_01_28 //plm/pnnas/ppic/Data_Exchange/HybridSaaS_Translation/For_testing/ "
