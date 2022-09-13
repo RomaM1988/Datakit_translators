@@ -49,7 +49,8 @@ stages {
 				stageDir="${params.StagePath}/Datakit_TranslatorWorker_${BUILD_TIMESTAMP}"
 				if ("${params.Share}"=="True")
 				  {
-				    	sh " cp -r /apps/JenkinsBase/stage/Datakit/Datakit_TranslatorWorker_2022_09_13_12_26_53/ //plm/pnnas/ppic/Data_Exchange/HybridSaaS_Translation/For_testing/ "
+				    	echo "inside share function"
+					sh " cp -r /apps/JenkinsBase/stage/Datakit/Datakit_TranslatorWorker_2022_09_12_20_01_28 //plm/pnnas/ppic/Data_Exchange/HybridSaaS_Translation/For_testing/ "
 				  }
 				sh "chmod +x ./stageAndDeployTranslatorWorkerUnit.sh "
 				result = sh(script: "./stageAndDeployTranslatorWorkerUnit.sh ${buildDir} ${stageDir} 'Artifacts' ${params.Deploy}", returnStatus: true)
