@@ -62,7 +62,7 @@ stages {
 				    if ("${params.Share}"=="true")
 				 	{
 					    echo "Sharing package at location- //plm/pnnas/ppic/Data_Exchange/HybridSaaS_Translation/For_testing/ "
-					    sh " cp -r ${stageDir} //plm/pnnas/ppic/Data_Exchange/HybridSaaS_Translation/For_testing/ "
+					    sh " cp -r ${stageDir} //plm/pnnas/ppic/Data_Exchange/HybridSaaS_Translation/For_testing/Baseline_${params.InteropRelease}/ "
 					}
 				
 				}
